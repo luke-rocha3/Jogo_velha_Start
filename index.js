@@ -36,19 +36,14 @@ function fazerJogada(jogador, nomeJogador) {
                     tabuleiro[linha][coluna] = jogador;
                     break;
                 } else {
-                    console.log("A posição já está ocupada! Tente outra posição.");
+                    console.log("Coluna inválida. Tente novamente.");
                 }
-            } else {
-                console.log("Coluna inválida. Tente novamente.");
             }
         } else {
             console.log("Linha inválida! Tente novamente.");
         }
     }
 }
-
-
-
 
 // Função para verificar vitória
 function verificarVencedor(jogador) {
