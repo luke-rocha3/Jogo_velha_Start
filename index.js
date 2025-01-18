@@ -11,6 +11,7 @@ let tabuleiro = [
 // Iniciar o jogo
 comecarJogo();
 
+
 // Função para exibir o tabuleiro
 function exibirTabuleiro() {
     console.log('Tabuleiro atual:');
@@ -23,13 +24,13 @@ function exibirTabuleiro() {
     //   });
 }
 // Função para fazer uma jogada
-function fazerJogada(jogador) {
+function fazerJogada(jogador, nomeJogador) {
     let linha, coluna;
 
     while (true) {
-        linha = readline.questionInt(`Vez do Jogador ${jogador}, selecione a linha (0, 1 ou 2): `);
+        linha = readline.questionInt(`Vez do Jogador ${nomeJogador}, selecione a linha (0, 1 ou 2): `);
         if (linha >= 0 && linha < 3) {
-            coluna = readline.questionInt(`Vez do Jogador ${jogador}, selecione a coluna (0, 1 ou 2): `);
+            coluna = readline.questionInt(`Vez do Jogador ${nomeJogador}, selecione a coluna (0, 1 ou 2): `);
             if (coluna >= 0 && coluna < 3) {
                 if (tabuleiro[linha][coluna] === ' ') {
                     tabuleiro[linha][coluna] = jogador;
@@ -50,7 +51,7 @@ function fazerJogada(jogador) {
 
 
 // Função para verificar vitória
-function verificarVencedor(jogador) {
+function verificarVencedor(jogador, nomeJogador) {
     for (let i = 0; i < 3; i++) {
         if (tabuleiro[i].every(cell => cell === jogador)) return true;
         //every -> verificar se todos os elementos do array atendem a uma 
@@ -71,23 +72,30 @@ function verificarVencedor(jogador) {
 
 // Função principal para iniciar o jogo
 function comecarJogo() {
+
+    let jogador1 = readline.question("Insira o nome do jogador(a) 1 (X): ");
+    let jogador2 = readline.question("Insira o nome do jogador(a) 2 (O): ");
+    let nomeJogador = jogador1;
+
     let jogadorAtual = 'X';
     let movimento = 0;
 
     while (movimento < 9) {
         exibirTabuleiro();
-        fazerJogada(jogadorAtual);
+        fazerJogada(jogadorAtual, nomeJogador);
 
-        if (verificarVencedor(jogadorAtual)) {
+        if (verificarVencedor(jogadorAtual, nomeJogador)) {
             exibirTabuleiro();
-            console.log(`Parabéns, jogador ${jogadorAtual}! Você venceu!`);
+            console.log(`Parabéns, jogador(a) ${nomeJogador}! Você venceu!`);
             return;
         }
 
         if (jogadorAtual === "X") {
             jogadorAtual = "O";
+            nomeJogador = jogador2;
         } else {
             jogadorAtual = "X";
+            nomeJogador = jogador1;
         }
         // jogadorAtual = jogadorAtual === 'X' ? 'O' : 'X';
         movimento++;
