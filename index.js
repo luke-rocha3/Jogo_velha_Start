@@ -11,7 +11,6 @@ let tabuleiro = [
 // Iniciar o jogo
 comecarJogo();
 
-
 // Função para exibir o tabuleiro
 function exibirTabuleiro() {
     console.log('Tabuleiro atual:');
@@ -23,18 +22,22 @@ function exibirTabuleiro() {
     //     console.log(row.join(' | '));
     //   });
 }
-// Função para fazer uma jogada
+
 function fazerJogada(jogador, nomeJogador) {
     let linha, coluna;
 
     while (true) {
         linha = readline.questionInt(`Vez do Jogador ${nomeJogador}, selecione a linha (0, 1 ou 2): `);
         if (linha >= 0 && linha < 3) {
-            coluna = readline.questionInt(`Vez do Jogador ${nomeJogador}, selecione a coluna (0, 1 ou 2): `);
-            if (coluna >= 0 && coluna < 3) {
-                if (tabuleiro[linha][coluna] === ' ') {
-                    tabuleiro[linha][coluna] = jogador;
-                    break;
+            while (true) {
+                coluna = readline.questionInt(`Vez do Jogador ${nomeJogador}, selecione a coluna (0, 1 ou 2): `);
+                if (coluna >= 0 && coluna < 3) {
+                    if (tabuleiro[linha][coluna] === ' ') {
+                        tabuleiro[linha][coluna] = jogador;
+                        return;
+                    } else {
+                        console.log("A posição já está ocupada! Tente outra posição.");
+                    }
                 } else {
                     console.log("Coluna inválida. Tente novamente.");
                 }
@@ -44,6 +47,7 @@ function fazerJogada(jogador, nomeJogador) {
         }
     }
 }
+
 
 // Função para verificar vitória
 function verificarVencedor(jogador) {
