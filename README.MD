@@ -1,6 +1,6 @@
 # 🕹️ Jogo da Velha
 
-Um jogo da velha (Tic-Tac-Toe) simples e interativo desenvolvido em JavaScript para rodar no terminal. Desafie um amigo e veja quem será o mestre do tabuleiro! 😃  
+Um jogo da velha (Tic-Tac-Toe) simples e interativo desenvolvido em JavaScript para rodar no terminal. 
 
 ---
 
@@ -42,6 +42,12 @@ npm install
 ### Execute o jogo no terminal
 
 node jogo-da-velha.js
+
+## 🎮 Divirta-se!
+
+Agora é só chamar um amigo e jogar! Quem será o grande campeão? 🎉  
+
+Agradecemos por conferir o projeto! Qualquer feedback ou contribuição será bem-vindo. ✨  
 
 
 
