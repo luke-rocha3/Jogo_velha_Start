@@ -29,25 +29,24 @@ function fazerJogada(jogador) {
     while (true) {
         linha = readline.questionInt(`Vez do Jogador ${jogador}, selecione a linha (0, 1 ou 2): `);
         if (linha >= 0 && linha < 3) {
-            coluna = readline.questionInt(`Vez do Jogador ${jogador}, selecione a coluna (0, 1 ou 2): `);
-            if (coluna >= 0 && coluna < 3) {
-                if (tabuleiro[linha][coluna] === ' ') {
-                    tabuleiro[linha][coluna] = jogador;
-                    break;
+            while (true) {
+                coluna = readline.questionInt(`Vez do Jogador ${jogador}, selecione a coluna (0, 1 ou 2): `);
+                if (coluna >= 0 && coluna < 3) {
+                    if (tabuleiro[linha][coluna] === ' ') {
+                        tabuleiro[linha][coluna] = jogador;
+                        return; 
+                    } else {
+                        console.log("A posição já está ocupada! Tente outra posição.");
+                    }
                 } else {
-                    console.log("A posição já está ocupada! Tente outra posição.");
+                    console.log("Coluna inválida. Tente novamente.");
                 }
-            } else {
-                console.log("Coluna inválida. Tente novamente.");
             }
         } else {
             console.log("Linha inválida! Tente novamente.");
         }
     }
 }
-
-
-
 
 // Função para verificar vitória
 function verificarVencedor(jogador) {
