@@ -51,7 +51,7 @@ function fazerJogada(jogador, nomeJogador) {
 
 
 // Função para verificar vitória
-function verificarVencedor(jogador, nomeJogador) {
+function verificarVencedor(jogador) {
     for (let i = 0; i < 3; i++) {
         if (tabuleiro[i].every(cell => cell === jogador)) return true;
         //every -> verificar se todos os elementos do array atendem a uma 
@@ -84,7 +84,7 @@ function comecarJogo() {
         exibirTabuleiro();
         fazerJogada(jogadorAtual, nomeJogador);
 
-        if (verificarVencedor(jogadorAtual, nomeJogador)) {
+        if (verificarVencedor(jogadorAtual)) {
             exibirTabuleiro();
             console.log(`Parabéns, jogador(a) ${nomeJogador}! Você venceu!`);
             return;
